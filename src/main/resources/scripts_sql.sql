@@ -1,0 +1,1 @@
+CREATE DATABASE test_infuse_tecnologia;

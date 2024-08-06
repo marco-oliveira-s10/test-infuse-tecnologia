@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: test-infuse-tecnologia
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_infuse_tecnologia
+    username: root
+    password: # Adicione a senha do banco de dados aqui se necessário
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
