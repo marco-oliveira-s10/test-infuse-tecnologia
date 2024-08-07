@@ -3,7 +3,6 @@ package com.squirrelcode.test_infuse_tecnologia.service;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,12 +15,14 @@ public class OrderService {
 
 	private final OrderRepository orderRepository;
 
-	@Autowired
 	public OrderService(OrderRepository orderRepository) {
 		this.orderRepository = orderRepository;
 	}
 
 	public class DuplicateOrderException extends RuntimeException {
+
+		private static final long serialVersionUID = 1L;
+
 		public DuplicateOrderException(String message) {
 			super(message);
 		}

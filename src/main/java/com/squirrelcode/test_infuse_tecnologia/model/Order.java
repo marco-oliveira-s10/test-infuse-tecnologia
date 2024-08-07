@@ -63,7 +63,7 @@ public class Order {
 		this.discountedTotalValue = this.totalPriceWithDiscount;
 	}
 
-	// Construtor com todos os parâmetros
+	// Construtor com todos os parâmetros para suporte a testes JUnit e outras injeções de dependências
 	public Order(String controlNumber, String productName, double unitPrice, int quantity, int customerCode) {
 		this.controlNumber = controlNumber;
 		this.productName = productName;

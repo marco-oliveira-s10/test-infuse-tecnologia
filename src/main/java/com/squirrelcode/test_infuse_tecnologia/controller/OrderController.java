@@ -24,7 +24,7 @@ import com.squirrelcode.test_infuse_tecnologia.model.Order;
 import com.squirrelcode.test_infuse_tecnologia.service.OrderService;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api/v1/orders")
 public class OrderController {
 
 	@Autowired
