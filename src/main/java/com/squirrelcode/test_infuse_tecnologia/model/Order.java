@@ -63,4 +63,12 @@ public class Order {
 		this.discountedTotalValue = this.totalPriceWithDiscount;
 	}
 
+	// Construtor com todos os parâmetros
+	public Order(String controlNumber, String productName, double unitPrice, int quantity, int customerCode) {
+		this.controlNumber = controlNumber;
+		this.productName = productName;
+		this.unitPrice = unitPrice;
+		this.quantity = quantity;
+		this.customerCode = customerCode;
+	}
 }
