@@ -1,5 +1,6 @@
 package com.squirrelcode.test_infuse_tecnologia.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +48,24 @@ public class OrderController {
 
 	@GetMapping
 	public CollectionModel<EntityModel<Order>> getAllOrders(@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "10") int size) {
+			@RequestParam(defaultValue = "10") int size, @RequestParam(required = false) String controlNumber,
+			@RequestParam(required = false) LocalDate registrationDate,
+			@RequestParam(required = false) String productName, @RequestParam(required = false) Double unitPrice,
+			@RequestParam(required = false) Integer quantity, @RequestParam(required = false) Integer customerCode,
+			@RequestParam(required = false) Double totalPriceWithDiscount,
+			@RequestParam(required = false) Double totalPriceWithoutDiscount) {
 
 		Pageable pageable = PageRequest.of(page, size);
-		Page<Order> orderPage = orderService.getAllOrders(pageable);
+		Page<Order> orderPage;
+
+		if (controlNumber != null || registrationDate != null || productName != null || unitPrice != null
+				|| quantity != null || customerCode != null || totalPriceWithDiscount != null
+				|| totalPriceWithoutDiscount != null) {
+			orderPage = orderService.getAllOrders(pageable, controlNumber, registrationDate, productName, unitPrice,
+					quantity, customerCode, totalPriceWithDiscount, totalPriceWithoutDiscount);
+		} else {
+			orderPage = orderService.getAllOrders(pageable);
+		}
 
 		return CollectionModel.of(
 				orderPage.getContent().stream()
@@ -58,17 +73,18 @@ public class OrderController {
 								WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(OrderController.class)
 										.getOrder(order.getControlNumber())).withSelfRel()))
 						.toList(),
-				WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(OrderController.class).getAllOrders(page, size))
-						.withSelfRel());
+				WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(OrderController.class).getAllOrders(page, size,
+						productName, registrationDate, productName, totalPriceWithoutDiscount, customerCode,
+						customerCode, totalPriceWithoutDiscount, totalPriceWithoutDiscount)).withSelfRel());
 	}
 
 	@GetMapping("/{controlNumber}")
-	public EntityModel<Order> getOrder(@PathVariable String controlNumber) {
-		Order order = orderService.getOrderByControlNumber(controlNumber);
-		return EntityModel.of(order,
-				WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(OrderController.class).getOrder(controlNumber))
-						.withSelfRel(),
-				WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(OrderController.class).getAllOrders(0, 10))
-						.withRel("orders"));
+	public ResponseEntity<Order> getOrder(@PathVariable String controlNumber) {
+		Order order = orderService.findByControlNumber(controlNumber);
+		if (order != null) {
+			return new ResponseEntity<>(order, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 }
