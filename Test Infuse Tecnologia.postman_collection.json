@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "d939a191-f06b-406e-9291-53696a22b336",
+		"name": "Test Infuse Tecnologia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32497273"
+	},
+	"item": [
+		{
+			"name": "list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders?page=0&size=10&controlNumber=ORD33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "registrationDate",
+							"value": "2024-08-06",
+							"disabled": true
+						},
+						{
+							"key": "productName",
+							"value": "Product A",
+							"disabled": true
+						},
+						{
+							"key": "unitPrice",
+							"value": "99.99",
+							"disabled": true
+						},
+						{
+							"key": "quantity",
+							"value": "11",
+							"disabled": true
+						},
+						{
+							"key": "customerCode",
+							"value": "456",
+							"disabled": true
+						},
+						{
+							"key": "totalPriceWithDiscount",
+							"value": "989.901",
+							"disabled": true
+						},
+						{
+							"key": "totalPriceWithoutDiscount",
+							"value": "1099.88",
+							"disabled": true
+						},
+						{
+							"key": "controlNumber",
+							"value": "ORD33"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "client send json",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"controlNumber\": \"ORD33\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"quantity\": 11,\r\n        \"customerCode\": 456\r\n    },\r\n    {\r\n        \"controlNumber\": \"ORD2\",\r\n        \"registrationDate\": \"2024-08-06\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"customerCode\": 456\r\n    },\r\n    {\r\n        \"controlNumber\": \"ORD3\",\r\n        \"registrationDate\": \"2024-08-06\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"customerCode\": 456\r\n    },\r\n    {\r\n        \"controlNumber\": \"ORD4\",\r\n        \"registrationDate\": \"2024-08-06\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"customerCode\": 456,\r\n        \"quantity\": 10\r\n    },\r\n    {\r\n        \"controlNumber\": \"ORD5\",\r\n        \"registrationDate\": \"2024-08-06\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"customerCode\": 456,\r\n        \"quantity\": 6\r\n    },\r\n    {\r\n        \"controlNumber\": \"ORD6\",\r\n        \"registrationDate\": \"2024-08-06\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"customerCode\": 456\r\n    },\r\n    {\r\n        \"controlNumber\": \"ORD7\",\r\n        \"registrationDate\": \"2024-08-06\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"customerCode\": 456\r\n    },\r\n    {\r\n        \"controlNumber\": \"ORD8\",\r\n        \"registrationDate\": \"2024-08-06\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"customerCode\": 456\r\n    },\r\n    {\r\n        \"controlNumber\": \"ORD9\",\r\n        \"registrationDate\": \"2024-08-06\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"customerCode\": 456\r\n    },\r\n    {\r\n        \"controlNumber\": \"ORD10\",\r\n        \"registrationDate\": \"2024-08-06\",\r\n        \"productName\": \"Product A\",\r\n        \"unitPrice\": 99.99,\r\n        \"customerCode\": 456\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "client send xml",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<Orders>\r\n    <Order>\r\n        <controlNumber>ORD33</controlNumber>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <quantity>11</quantity>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n    <Order>\r\n        <controlNumber>ORD2</controlNumber>\r\n        <registrationDate>2024-08-06</registrationDate>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n    <Order>\r\n        <controlNumber>ORD3</controlNumber>\r\n        <registrationDate>2024-08-06</registrationDate>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n    <Order>\r\n        <controlNumber>ORD4</controlNumber>\r\n        <registrationDate>2024-08-06</registrationDate>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <quantity>10</quantity>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n    <Order>\r\n        <controlNumber>ORD5</controlNumber>\r\n        <registrationDate>2024-08-06</registrationDate>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <quantity>6</quantity>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n    <Order>\r\n        <controlNumber>ORD6</controlNumber>\r\n        <registrationDate>2024-08-06</registrationDate>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n    <Order>\r\n        <controlNumber>ORD7</controlNumber>\r\n        <registrationDate>2024-08-06</registrationDate>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n    <Order>\r\n        <controlNumber>ORD8</controlNumber>\r\n        <registrationDate>2024-08-06</registrationDate>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n    <Order>\r\n        <controlNumber>ORD9</controlNumber>\r\n        <registrationDate>2024-08-06</registrationDate>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n    <Order>\r\n        <controlNumber>ORD10</controlNumber>\r\n        <registrationDate>2024-08-06</registrationDate>\r\n        <productName>Product A</productName>\r\n        <unitPrice>99.99</unitPrice>\r\n        <customerCode>456</customerCode>\r\n    </Order>\r\n</Orders>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Swagger",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/swagger-ui/index.html",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swagger-ui",
+						"index.html"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
